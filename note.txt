@@ -1,0 +1,50 @@
+.angular        - configuration btw angular app and angular cli
+.vscode         - configuration btw vscode and angular
+node_modules    - when install extra 3rd party packages or libraries its copy is storded here
+.editorconfig   - editor configuration files
+.gitignore      - files to be ignored during push
+angular.json    - angular details
+package.json    - includes name and version of all packages
+tsconfig. files - type script configuration files
+
+
+create project 
+   -ng new projectName   or
+   -ng new projectName --routing   //(if routing not asking)
+
+clear errors/warning 
+   -npm i --forcee
+
+project running cmd
+   -ng serve --open
+ 
+to create new component
+   -ng g c demo      //(g-genarate  c-component)
+
+
+life cycle of angular component
+--------------------------------
+constructor--->ngOnInit --->other methods
+
+Data Binding Techniques in Angular (data sharing in component)
+-----------------------------------
+html  - view
+ts    - component
+
+
+1  One way binding
+-------------------
+1.1 - component to view data sharing :
+  
+  1.1.1  string interpollation         {{...}}  
+  1.1.2  property binding              [property]="..."
+
+1.2 - view to component data sharing :
+
+  1.2.1  event binding                                      (event)="method()"
+  1.2.2  event binding using $event                         (event)=method($event) 
+  1.2.3  event binding using template rendering variable    #variable
+
+2 Two way binding
+-------------------
+2.1 - ngModel           [(ngModel)]="property"    -- FormsModule

@@ -1,0 +1,19 @@
+<div class="container w-50 rounded text-center p-5 mt-5 border" style="background-color: rgba(0, 0, 0, 0.349);">
+    <h1>Sign In To Your Account</h1>
+    <form action="">
+        <div class="p-3 mt-2">
+            <input #acno id="acid" name="acnum1"  class="form-control" placeholder="Account Number" type="text">
+        </div>
+        <div  class="p-3 mt-2">
+            <input #psw id="psw1" name="paswrd1" class="form-control" type="password" placeholder="Enter a password">
+        </div>
+        <div  class="p-3 mt-2">
+            <button type="button" (click)="login(acno,psw)" class="btn btn-outline-light">login</button>
+        </div>
+    </form>
+</div>
+
+<!-- <input id="psw1" name="paswrd1" (change)="paswrdChange($event)" class="form-control" type="password" placeholder="Enter a password"> -->
+
+
+  
