@@ -48,3 +48,30 @@ ts    - component
 2 Two way binding
 -------------------
 2.1 - ngModel           [(ngModel)]="property"    -- FormsModule
+
+
+Redirection in angular
+-----------------------
+Module - AppRoutingModule
+Router - a class used to redirect 
+methods- navigateByUrl
+
+Dependency Injection
+---------------------
+to share datas from one class to another class
+
+inside constructor 
+
+    access_specifier reference:ClassName
+    private/public
+
+   reference.method()
+
+
+Angular Services
+------------------------
+
+to store redentent and methods
+ - all the components can access the datas and methods defined in service file easily
+
+          -ng g s service_name
