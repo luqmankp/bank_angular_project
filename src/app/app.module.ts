@@ -7,13 +7,15 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { DashbordComponent } from './dashbord/dashbord.component';
 import { RegisterComponent } from './register/register.component';
+import { TransactionComponent } from './transaction/transaction.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashbordComponent,
-    RegisterComponent
+    RegisterComponent,
+    TransactionComponent
   ],
   imports: [
     BrowserModule,

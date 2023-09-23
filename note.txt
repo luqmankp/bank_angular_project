@@ -75,3 +75,22 @@ to store redentent and methods
  - all the components can access the datas and methods defined in service file easily
 
           -ng g s service_name
+
+  angular dierectives - to manipulate DOM 
+  ----------------------------
+
+  1. component dieractives
+  2. structural dieractives  *ngFor      
+  
+
+  validation in angular
+  -------------------------
+
+  form creation in angular
+
+       1. template driven form
+       2. model form
+
+           2.1. reactive form - used to create model of form
+
+               - reactiveFormsModule

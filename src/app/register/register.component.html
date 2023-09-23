@@ -2,22 +2,31 @@
 
     <h1>Sign Up To Bank</h1>
 
-    <form action="">
+    <form action="" (ngSubmit)="register()">
 
         <div class="p-3 mt-2">
-            <input type="text" class="form-control" placeholder="enter username" name="usern1" id="unameid">
+            <input [(ngModel)]="uname" type="text" class="form-control" placeholder="enter username" name="usern1"
+                id="unameid">
         </div>
 
         <div class="p-3 mt-2">
-            <input type="number" class="form-control" placeholder="enter account number" name="usern1" id="unameid">
+            <input [(ngModel)]="acno" type="number" class="form-control" placeholder="enter account number"
+                name="usern1" id="acnoid">
         </div>
 
         <div class="p-3 mt-2">
-            <input type="password" class="form-control" placeholder="enter password" name="paswrd1" id="psw1">
+            <input [(ngModel)]="psw" type="password" class="form-control" placeholder="enter password" name="paswrd1"
+                id="psw1">
         </div>
 
         <div class="p-3 mt-2">
-            <button type="button" (click)="register()" class="btn btn-outline-warning">Register</button>
+            <button type="submit" class="btn btn-outline-warning">Register</button>
+        </div>
+
+        <div class="text-center">
+            <strong> Already Registered? </strong>
+            <a style="text-decoration: none; color: rgb(223, 178, 65);" routerLink="">
+                <strong> login </strong> </a>
         </div>
 
     </form>
