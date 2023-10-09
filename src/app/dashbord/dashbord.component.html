@@ -1,32 +1,210 @@
+<header>
+
+    <h1 class="heading1 mb-2 pb-1 text-center">Welcome {{user}}</h1>
+    <div class="text-center mt-0 pt-0">
+        <h5 class=" mt-0 pt-0">{{datedetails | date :'short'}}</h5>
+    </div>
+
+</header>
+
+
+<app-deleteconfirm (onDelete)="Delete($event)" (oncancel)="cancel()" [item]="acno"></app-deleteconfirm>
+
+<main [ngClass]="acno?'style':'' ">
+
+    <section>
+        <div class="container-fluid">
+            <div class="row w-75 ms-auto me-auto">
+                <div
+                    class="col-lg-5 col-md-5 col-12 mt-4 text-center ms-auto me-auto bg-secondary bg-opacity-50 rounded-4">
+                    <div>
+                        <h3 class="p-4">Deposite</h3>
+                    </div>
+                    <form [formGroup]="depsitFrom" (ngSubmit)="deposite()">
+                        <div>
+                            <input formControlName="acno" id="acid1" name="acnum1" type="text"
+                                class="form-control m-2 mb-0 w-75 ms-auto me-auto" placeholder="account number">
+                        </div>
+                        <div *ngIf="this.depsitFrom.get('acno')?.touched && this.depsitFrom.get('acno')?.errors">
+                            <p class="w-75 ms-auto me-auto text-white bg-danger  me-auto ms-auto rounded-bottom-4 p-1 ">
+                                *
+                                this field is
+                                required
+                            </p>
+                        </div>
+                        <div>
+                            <input formControlName="psw" id="psw1" name="paswrd1" type="password"
+                                class="form-control m-2 mb-0 w-75 ms-auto me-auto" placeholder="password">
+                        </div>
+                        <div *ngIf="this.depsitFrom.get('psw')?.touched && this.depsitFrom.get('psw')?.errors">
+                            <p class="w-75 ms-auto me-auto text-white bg-danger  me-auto ms-auto rounded-bottom-4 p-1 ">
+                                *
+                                this field is
+                                required
+                            </p>
+                        </div>
+                        <div>
+                            <input formControlName="amnt" id="amouid1" name="amnt1" type="text"
+                                class="form-control m-2 mb-0 w-75 ms-auto me-auto" placeholder="amount">
+                        </div>
+                        <div *ngIf="this.depsitFrom.get('amnt')?.touched && this.depsitFrom.get('amnt')?.errors">
+                            <p class="w-75 ms-auto me-auto text-white bg-danger  me-auto ms-auto rounded-bottom-4 p-1 ">
+                                *
+                                this field is
+                                required
+                            </p>
+                        </div>
+                        <div>
+                            <button type="submit"
+                                class="btn btn-outline-success m-4 text-white"><strong>C</strong>redit</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div
+                    class="col-lg-5 col-md-5 col-12 mt-4 text-center ms-auto me-auto bg-secondary bg-opacity-50 rounded-4">
+
+                    <div>
+                        <h3 class="p-4">Withdraw</h3>
+                    </div>
+                    <form [formGroup]="withdrawForm" (ngSubmit)="withdraw()">
+                        <div>
+                            <input formControlName="acno1" id="acid2" name="acnum2" type="text"
+                                class="form-control m-2 mb-0 w-75 ms-auto me-auto" placeholder="account number">
+                        </div>
+                        <div *ngIf="this.withdrawForm.get('acno1')?.touched && this.withdrawForm.get('acno1')?.errors">
+                            <p class="w-75 ms-auto me-auto text-white bg-danger  me-auto ms-auto rounded-bottom-4 p-1 ">
+                                *
+                                this field is
+                                required
+                            </p>
+                        </div>
+                        <div>
+                            <input formControlName="psw1" id="psw2" name="paswrd2" type="password"
+                                class="form-control m-2 mb-0 w-75 ms-auto me-auto" placeholder="password">
+                        </div>
+                        <div *ngIf="this.withdrawForm.get('psw1')?.touched && this.withdrawForm.get('psw1')?.errors">
+                            <p class="w-75 ms-auto me-auto text-white bg-danger  me-auto ms-auto rounded-bottom-4 p-1 ">
+                                *
+                                this field is
+                                required
+                            </p>
+                        </div>
+                        <div>
+                            <input formControlName="amnt1" id="amouid2" name="amnt2" type="text"
+                                class="form-control m-2 mb-0 w-75 ms-auto me-auto" placeholder="amount">
+                        </div>
+                        <div *ngIf="this.withdrawForm.get('amnt1')?.touched && this.withdrawForm.get('amnt1')?.errors">
+                            <p class="w-75 ms-auto me-auto text-white bg-danger  me-auto ms-auto rounded-bottom-4 p-1 ">
+                                *
+                                this field is
+                                required
+                            </p>
+                        </div>
+                        <div>
+                            <button type="submit"
+                                class="btn btn-outline-info m-4 text-white"><strong>D</strong>ebit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="buttons">
+        <div class="container">
+            <div class="row mt-5 ms-4 me-4">
+                <div class="col-lg-1 col-0"></div>
+                <div class=" col-lg-3 col-md-4 col-12 text-center mt-3 mb-2">
+                    <button class=" ps-3 pe-3 p-2 bg-secondary bg-opacity-75 rounded-5"
+                        style="text-decoration: none; color: rgb(255, 255, 255); border: 3px solid rgb(218, 243, 255) ;"
+                        routerLink="/transaction">
+                        Transaction
+                        history</button>
+                </div>
+                <div class=" col-lg-4 col-md-4 col-12 text-center mt-3 mb-2">
+                    <button type="submit" class=" ps-4 pe-4 p-2 bg-danger  bg-opacity-75 rounded-5"
+                        style="text-decoration: none; color: rgb(255, 255, 255); border: 3px solid rgb(218, 243, 255) ;"
+                        (click)="deleteParent()">Delet account</button>
+                </div>
+                <div class=" col-lg-3 col-md-4 col-12 text-center mt-3 mb-2">
+                    <button type="submit" class=" ps-5 pe-5 p-2 bg-secondary bg-opacity-75 rounded-5"
+                        style="text-decoration: none; color: rgb(255, 255, 255); border: 3px solid rgb(218, 243, 255) ;"
+                        (click)="logout()">Logout</button>
+                </div>
+                <div class="col-lg-1 col-0"></div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="text-center mt-0 pt-0">
+    <h2 class="mt-0 pt-0">{{datedetails | date :'short'}}</h2>
+</div>
+
 <h1 class="container text-center">Welcome {{user}}</h1>
 
-<div class="container w-25 text-center border border-dark rounded-pill p-2 mt-3" style="background-color: rgba(0, 0, 0, 0.349);">
+<div class="text-end pt-3 pe-3">
+    <button class="btn btn-danger" (click)="deleteParent()">Delete Account</button>
+    <button (click)=" logout()" class="btn btn-warning ms-2">Logout</button>
+</div>
+
+<div [ngClass]="acno?'style':'' " class="container w-25 text-center border border-dark rounded-pill p-2 mt-3"
+    style="background-color: rgba(0, 0, 0, 0.349);">
     <a style="text-decoration: none; color: rgb(255, 255, 255);" routerLink="/transaction">View Transaction History</a>
 </div>
 
-<div class="row mb-5 p-5">
+<app-deleteconfirm (oncancel)="cancel()" [item]="acno"></app-deleteconfirm>
 
-    <div class="container text-center col-lg-6 col-md-12">
+<div [ngClass]="acno?'style':'' " class="row mb-5 p-5">
+
+    <div class="text-center col-lg-6 col-md-12">
 
         <div class="container w-75 rounded text-center p-5 mt-2" style="background-color: rgba(0, 0, 0, 0.349);">
 
             <h1 class="text-white">Deposit</h1>
 
-            <form action="">
+            <form [formGroup]="depositForm" (ngSubmit)="deposite()" action="">
+
                 <div class="p-3 mt-2">
-                    <input type="number" [(ngModel)]="acno" id="acid" name="acnum1" class="form-control" placeholder="Enter account number">
+                    <input type="text" formControlName="acno" id="acid" name="acnum1" class="form-control"
+                        placeholder="Enter account number">
+                </div>
+                <div *ngIf="this.depositForm.get('acno')?.errors && this.depositForm.get('acno')?.touched">
+                    <p class="text-danger">accept only numbers</p>
                 </div>
 
                 <div class="p-3 mt-2">
-                    <input type="password" [(ngModel)]="psw" id="psw1" name="paswrd1" placeholder="Enter password" class="form-control">
+                    <input type="password" formControlName="psw" id="psw1" name="paswrd1" placeholder="Enter password"
+                        class="form-control">
+                </div>
+                <div *ngIf="this.depositForm.get('psw')?.errors && this.depositForm.get('psw')?.touched">
+                    <p class="text-danger">accept only numbers</p>
                 </div>
 
                 <div class="p-3 mt-2">
-                    <input type="text" [(ngModel)]="amnt" id="Amouid" name="amnt1" placeholder="Amount" class="form-control">
+                    <input type="text" formControlName="amnt" id="Amouid" name="amnt1" placeholder="Amount"
+                        class="form-control">
+                </div>
+                <div *ngIf="this.depositForm.get('amnt')?.errors && this.depositForm.get('amnt')?.touched">
+                    <p class="text-danger">accept only numbers</p>
                 </div>
 
                 <div p-3 mt-2>
-                    <button type="button" (click)="deposit()" class="btn btn-outline-warning">Deposit</button>
+                    <button type="submit" class="btn btn-outline-warning">Deposit</button>
                 </div>
 
             </form>
@@ -41,21 +219,34 @@
 
             <h1 class="text-white">Withdrow</h1>
 
-            <form action="">
+            <form [formGroup]="withdrawForm" (ngSubmit)="withdraw()" action="">
+
                 <div class="p-3 mt-2">
-                    <input [(ngModel)]="acno1" type="text" id="acid2" name="acnum2" class="form-control" placeholder="Enter account number">
+                    <input type="text" formControlName="acno1" id="acid2" name="acnum2" class="form-control"
+                        placeholder="Enter account number">
+                </div>
+                <div *ngIf="this.withdrawForm.get('acno1')?.errors && this.withdrawForm.get('acno1')?.touched">
+                    <p class="text-danger">accept only numbers</p>
                 </div>
 
                 <div class="p-3 mt-2">
-                    <input [(ngModel)]="psw1" type="password" id="psw2" name="paswrd2" placeholder="Enter password" class="form-control">
+                    <input type="password" formControlName="psw1" id="psw2" name="paswrd2" placeholder="Enter password"
+                        class="form-control">
+                </div>
+                <div *ngIf="this.withdrawForm.get('psw1')?.errors && this.withdrawForm.get('psw1')?.touched">
+                    <p class="text-danger">accept only numbers</p>
                 </div>
 
                 <div class="p-3 mt-2">
-                    <input [(ngModel)]="amnt1" type="text" id="Amouid1" name="amnt2" placeholder="Amount" class="form-control">
+                    <input type="text" formControlName="amnt1" id="Amouid1" name="amnt2" placeholder="Amount"
+                        class="form-control">
+                </div>
+                <div *ngIf="this.withdrawForm.get('amnt1')?.errors && this.withdrawForm.get('amnt1')?.touched">
+                    <p class="text-danger">accept only numbers</p>
                 </div>
 
                 <div p-3 mt-2>
-                    <button type="button" (click)="withdraw()" class="btn btn-outline-warning">withdraw</button>
+                    <button type="submit" class="btn btn-outline-warning">withdraw</button>
                 </div>
 
             </form>
@@ -65,4 +256,4 @@
     </div>
 
 
-</div>
+</div> -->

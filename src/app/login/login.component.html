@@ -1,23 +1,40 @@
-<div class="container w-50 rounded text-center p-5 mt-5" style="background-color: rgba(0, 0, 0, 0.349);">
-    <h1>Sign In To Your Account</h1>
-    <form action="" (ngSubmit)="login()">
+<div class="container w-50 rounded p-5 mt-5" style="background-color: rgba(0, 0, 0, 0.349);">
+
+    <h1 class="text-center text-white">Sign In To Your Account</h1>
+
+    <form [formGroup]="LoginForm" action="" (ngSubmit)="login()">
+
         <div class="p-3 mt-2">
-            <input [(ngModel)]="acno" id="acid" name="acnum1" class="form-control" placeholder="Account Number"
+            <input id="acid" formControlName="acno" name="acnum1" class="form-control" placeholder="Account Number"
                 type="text">
         </div>
+        <div *ngIf="this.LoginForm.get('acno')?.errors && this.LoginForm.get('acno')?.touched">
+            <p class="text-danger">accept only numbers</p>
+        </div>
+
         <div class="p-3 mt-2">
-            <input [(ngModel)]="psw" id="psw1" name="paswrd1" class="form-control" type="password"
+            <input id="psw1" formControlName="psw" name="paswrd1" class="form-control" type="password"
                 placeholder="Enter a password">
         </div>
-        <div class="p-3 mt-2">
+        <div *ngIf="this.LoginForm.get('psw')?.errors && this.LoginForm.get('psw')?.touched">
+            <p class="text-danger">accept only numbers and charactors</p>
+        </div>
+
+
+        <div class="p-3 mt-2 text-center">
             <button type="submit" class="btn btn-outline-light">login</button>
         </div>
+
         <div class="text-center">
+
             <strong> Not Registered? </strong>
+
             <a style="text-decoration: none; color: rgb(223, 178, 65);" routerLink="Register">
                 <strong> Register </strong> </a>
         </div>
+
     </form>
+
 </div>
 
 <!-- <input id="psw1" name="paswrd1" (change)="paswrdChange($event)" class="form-control" type="password" placeholder="Enter a password"> -->

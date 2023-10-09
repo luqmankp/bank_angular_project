@@ -1,4 +1,47 @@
-<div class="text-center container w-50 mt-5 fs-5 p-5">
+<section class="text-center w-75 ms-auto me-auto">
+
+    <div class="p-5">
+        <h2>Transaction History</h2>
+    </div>
+    <div class="bg-black bg-opacity-75 pb-4 text-white">
+        <table class="w-75 ms-auto me-auto">
+            <thead class=" border-bottom border-light">
+                <tr class="w-100">
+                    <th class="p-4">Type</th>
+                    <th class="p-4">Amount</th>
+                </tr>
+
+            </thead>
+
+            <tbody *ngFor="let i of transactionData">
+                <tr class="p-3">
+                    <td>
+                        {{i.Type}}
+                    </td>
+                    <td>
+                        {{i.amount}}
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="ms-auto mt-5 mb-5" >
+        <button class="btn bg-dark bg-opacity-75 text-white px-3 pe-4" routerLink="/dashbord">&#60; Back</button>
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="text-center container w-50 mt-5 fs-5 p-5">
     <h2>Transaction History</h2>
 
     <hr>
@@ -31,4 +74,4 @@
 
     <hr class="text-white">
 
-</div>
+</div> -->

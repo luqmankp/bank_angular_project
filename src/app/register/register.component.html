@@ -1,25 +1,34 @@
-<div class="container w-50 rounded text-center p-5 mt-5" style="background-color: rgba(0, 0, 0, 0.349);">
+<div class="container w-50 rounded p-5 mt-5" style="background-color: rgba(0, 0, 0, 0.349);">
 
-    <h1>Sign Up To Bank</h1>
+    <h1 class="text-center">Sign Up To Bank</h1>
 
-    <form action="" (ngSubmit)="register()">
+    <form [formGroup]="registerForm" action="" (ngSubmit)="register()">
 
         <div class="p-3 mt-2">
-            <input [(ngModel)]="uname" type="text" class="form-control" placeholder="enter username" name="usern1"
+            <input formControlName="uname" type="text" class="form-control" placeholder="enter username" name="usern1"
                 id="unameid">
         </div>
+        <div *ngIf="this.registerForm.get('uname')?.errors && this.registerForm.get('uname')?.touched">
+            <p style="color: red;">must contain charactors</p>
+        </div>
 
         <div class="p-3 mt-2">
-            <input [(ngModel)]="acno" type="number" class="form-control" placeholder="enter account number"
+            <input formControlName="acno" type="number" class="form-control" placeholder="enter account number"
                 name="usern1" id="acnoid">
         </div>
-
-        <div class="p-3 mt-2">
-            <input [(ngModel)]="psw" type="password" class="form-control" placeholder="enter password" name="paswrd1"
-                id="psw1">
+        <div *ngIf="this.registerForm.get('acno')?.errors && this.registerForm.get('acno')?.touched">
+            <p class="text-danger">accept only numbers</p>
         </div>
 
         <div class="p-3 mt-2">
+            <input formControlName="psw" type="password" class="form-control" placeholder="enter password"
+                name="paswrd1" id="psw1">
+        </div>
+        <div *ngIf="this.registerForm.get('psw')?.errors && this.registerForm.get('psw')?.touched">
+            <p style="color: red;">accept only charactors and numbers</p>
+        </div>
+
+        <div class="p-3 mt-2 text-center">
             <button type="submit" class="btn btn-outline-warning">Register</button>
         </div>
 
